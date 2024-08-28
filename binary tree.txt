@@ -1,0 +1,25 @@
+class TreeNode:
+    def __init__(self, value=0, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+def height_of_binary_tree(root):
+    if root is None:
+        return -1  # Use 0 if you prefer the height of an empty tree to be 0
+    
+    left_height = height_of_binary_tree(root.left)
+    right_height = height_of_binary_tree(root.right)
+    
+    return 1 + max(left_height, right_height)
+
+# Example usage
+# Constructing a binary tree
+#      1
+#     / \
+#    2   3
+#   / \
+#  4   5
+root = TreeNode(1, TreeNode(2, TreeNode(4), TreeNode(5)), TreeNode(3))
+
+print(height_of_binary_tree(root))  # Output: 2
